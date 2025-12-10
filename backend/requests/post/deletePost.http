@@ -1,0 +1,4 @@
+DELETE http://localhost:3000/posts/693728c0d5cfdfa8628a93c4 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5MzcyNzViODA5OTljMTc3MjlhMjdhYSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2NTIyMjYwNiwiZXhwIjoxNzY1ODI3NDA2fQ.MrK4edmvIyfWHAW_AZQS_oCeje2ILWFl4XeQZ5Ykke8
+//  "userId": "6937275b80999c17729a27aa",
+//   "_id": "693727f9d5cfdfa8628a93a5",

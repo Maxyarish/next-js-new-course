@@ -1,12 +1,12 @@
+
+import { CONSTANTS } from "@/constants";
 import type {
   ApiResponse,
   AuthResponse,
-  LoginDto,
-  RegisterDto,
-} from "@/shared/api.interface";
-import type { CreatePostDto, Post } from "@/shared/types/post.interface";
+  
+} from "@/shared/types/api.interface";
+import type { LoginDto, RegisterDto } from "@/shared/types/user.interface";
 import axios, { type AxiosResponse } from "axios";
-import queryString from "query-string";
 
 const apiClient = axios.create({
   baseURL: CONSTANTS.BASE_URL,
@@ -30,14 +30,3 @@ export const loginUser = (
 ): Promise<AxiosResponse<ApiResponse<AuthResponse>>> =>
   apiClient.post("/users/login", values);
 
-export const createPost = (
-  values: CreatePostDto
-): Promise<AxiosResponse<ApiResponse<Post>>> =>
-  apiClient.post("/posts", values);
-
-export const getAllPosts = (): Promise<AxiosResponse<ApiResponse<Post[]>>> =>
-  apiClient.post("/posts");
-
-export const deletePost = (
-  id: string
-): Promise<AxiosResponse<ApiResponse<Post>>> => apiClient.get(`/posts/${id}`);

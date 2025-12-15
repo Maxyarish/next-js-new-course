@@ -1,14 +1,12 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import type { CreatePostDto, Post, PostsState } from "@/shared/types/post.interface";
-import {createPost,deletePost, getAllPosts} from '@/api';
+import type { CreatePostDto, DeletePostDto, Post, PostsState } from "@/shared/types/post.interface";
+import {createPost,deletePost, getAllPosts} from '@/api/post/post';
 import { pendingCase, rejectedCase } from "./function";
 
 
 
-
-
-export const createPostThunk = createAsyncThunk <Post,CreatePostDto>(
-  "products/createPostThunk",
+export const createPostThunk = createAsyncThunk <Post,CreatePostDto, { rejectValue: string }>(
+  "post/createPostThunk",
   async (values, thunkAPI) => {
     try {
       const response = await createPost(values);
@@ -18,8 +16,8 @@ export const createPostThunk = createAsyncThunk <Post,CreatePostDto>(
     }
   }
 );
-export const getAllPostsThunk = createAsyncThunk<Post[],void> (
-  "products/getAllPostsThunk",
+export const getAllPostsThunk = createAsyncThunk<Post[],void, { rejectValue: string }> (
+  "posts/getAllPostsThunk",
   async (_, thunkAPI) => {
     try {
       const response = await getAllPosts();
@@ -29,8 +27,8 @@ export const getAllPostsThunk = createAsyncThunk<Post[],void> (
     }
   }
 );
-export const deletePostThunk = createAsyncThunk<Post,string>(
-  "products/deletePostThunk",
+export const deletePostThunk = createAsyncThunk<Post,DeletePostDto, { rejectValue: string }>(
+  "posts/deletePostThunk",
   async (id, thunkAPI) => {
     try {
       const response = await deletePost(id);
